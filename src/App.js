@@ -2,7 +2,11 @@ import React from "react";
 import "./App.css";
 
 function App() {
-  return <div className="app">Covid-19 Trcaker by Vinothkumar S</div>;
+  return (
+    <div className="app">
+      <h1>Covid-19 Tracker by Vinothkumar S</h1>
+    </div>
+  );
 }
 
 export default App;
