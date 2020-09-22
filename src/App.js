@@ -13,6 +13,7 @@ import Map from "./Map";
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
+  const [countryInfo, setCountryInfo] = useState({});
 
   //*code for pulling the countries from api for dropdown
   useEffect(() => {
@@ -31,11 +32,21 @@ function App() {
   }, []);
 
   //*Code for selecting the dropdown
-  const onCountryChange = (event) => {
+  const onCountryChange = async (event) => {
     const countryCode = event.target.value;
     console.log(">>>>>>>>>>", countryCode);
-    setCountry(countryCode);
+    const url =
+      countryCode === "worldwide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setCountry(countryCode);
+        setCountryInfo(data);
+      });
   };
+  console.log("CountryInfo", countryInfo);
   return (
     <div className="app">
       <div className="app__left">
