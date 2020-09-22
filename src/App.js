@@ -31,6 +31,15 @@ function App() {
     getCountriesData();
   }, []);
 
+  //*Code for pulling the data from api once the componenet is loaded i.e. for worldwide option
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, []);
+
   //*Code for selecting the dropdown
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
