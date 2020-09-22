@@ -1,4 +1,4 @@
-import { Card, Typography } from "@material-ui/core";
+import { Card, Typography, CardContent } from "@material-ui/core";
 import React from "react";
 
 function InfoBox({ title, cases, total }) {
@@ -8,14 +8,16 @@ function InfoBox({ title, cases, total }) {
       {/* infoBox addtional cases */}
       {/* infoBox total */}
       <Card className="infoBox">
-        <Typography className="infoBox__title" color="textSecondary">
-          {title}
-        </Typography>
-        {/* New additional cases */}
-        <h2 className="infoBox__cases">{cases}</h2>
-        <Typography className="infoBox__total" color="textSecondary">
-          {total}
-        </Typography>
+        <CardContent>
+          <Typography className="infoBox__title" color="textSecondary">
+            {title}
+          </Typography>
+          {/* New additional cases */}
+          <h2 className="infoBox__cases">{cases}</h2>
+          <Typography className="infoBox__total" color="textSecondary">
+            {total}
+          </Typography>
+        </CardContent>
       </Card>
     </div>
   );
