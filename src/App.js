@@ -9,11 +9,12 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
-
+import Table from "./Table";
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   //*code for pulling the countries from api for dropdown
   useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
+          setTableData(data);
           setCountries(countries);
         });
     };
@@ -104,6 +106,7 @@ function App() {
         <CardContent>
           <h3>Live cases by country</h3>
           {/* table */}
+          <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
           {/* graph */}
         </CardContent>
